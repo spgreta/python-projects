@@ -1,0 +1,70 @@
+#roman numeral generator
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        numerals = {"I" : 1, "V" : 5, "X" : 10, "L" : 50, "C" : 100, "D" : 500, "M" : 1000}
+        result = 0
+        for x in range(len(s)):
+            if x + 1 < len(s) and numerals[s[x]] < numerals[s[x+1]]:
+                result -= numerals[s[x]]
+            else:
+                result += numerals[s[x]]
+        return result
+ 
+ #check if ransom note contained within magazine
+ class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        ran = []
+        mag = []
+        for x in ransomNote:
+            ran.append(x)
+        for x in magazine:
+            mag.append(x)
+        result = 0
+        for x in ran:
+            if x in mag:
+                result += 1
+                mag.remove(x)
+        if result == len(ran):
+            return True
+        else:
+            return False
+
+#replace values divisible by 3 and 5 with "fizzbuzz", divisible by 3 with "fizz", and divisible by 5 with "buzz
+class Solution:
+    def fizzBuzz(self, n: int) -> List[str]:
+        answ = []
+        answer = []
+        for x in range(1, n+1):
+            answ.append(x)
+        print(answ)
+        for x in answ:
+            if x % 3 != 0 and x % 5 != 0:
+                answer.insert(x, str(x))
+            elif x % 3 == 0 and x % 5 == 0:
+                answer.insert(x, "FizzBuzz")
+            elif x % 3 == 0:
+                answer.insert(x, "Fizz")
+            elif x % 5 == 0:
+                answer.insert(x, "Buzz")
+        return answer
+
+#reduce a number to 0 and get the number of steps it takes
+class Solution:
+    def numberOfSteps(self, num: int) -> int:
+        count = 0
+        while num > 0:
+            if num % 2 == 0:
+                num = num/2
+                count += 1
+            if num % 2 != 0:
+                num -= 1
+                count += 1
+        return count
+
+#return wealth of wealthiest customer where each list within a list is a customer's wealth in multiple banks
+class Solution:
+    def maximumWealth(self, accounts: List[List[int]]) -> int:
+        summ = []
+        for x in accounts:
+            summ.append(sum(x))
+        return max(summ)
