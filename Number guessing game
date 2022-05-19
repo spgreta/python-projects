@@ -1,0 +1,20 @@
+from random import randint
+import math
+a = int(input("Enter a lower boundary: "))
+b = int(input("Enter an upper boundary: "))  
+answer = randint(a, b+1)
+turns = math.log((b-a + 1), 2)
+count = 0
+while count < turns:
+    count += 1
+    guess = int(input("Enter a number: "))
+    if answer == guess:
+        print("You are correct! You win!")
+        break
+    elif answer < guess:
+        print("Your guess was too high. Try again!")
+    elif answer > guess:
+        print("Your guess was too small. Try again!")
+    if count == turns:
+        print("The answer was %s" % answer)
+        print("Play again?")
