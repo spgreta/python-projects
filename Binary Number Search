@@ -1,0 +1,13 @@
+def binsearch(a,b):
+    answer = []
+    index = []
+    for x in range(len(a)):
+        if a[x] == b:
+            index.append(x)
+            answer.append(x)
+        elif a[x] != b:
+            pass
+    if answer == index:
+        print("Element %d is present at index %d" % (b ,index[0]))
+    else:
+        print("Element %d is not present in array." %b)
