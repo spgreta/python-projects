@@ -1,0 +1,23 @@
+from random import randint
+answer = randint(1,100)
+print("Hello! Welcome to the number guessing game. You'll be asked to guess a number between 1 and 100. If you're within 10 of the answer on the first guess, you are warm! If you're farther away, you're cold! For your next guesses, we'll let you know if you're getting warmer or colder. Try your best!")
+guesses = [0]
+while True:
+    guess = int(input("Enter a guess: "))
+    if guess < 1 or guess > 100:
+        print("Out of bounds!")
+        continue
+    elif guess == answer:
+        print("You got the answer! You guessed the answer in only {} guesses!".format(len(guesses)))
+        break
+    guesses.append(guess)
+    if guesses[-2]:
+        if abs(answer - guess) <= abs(answer-guesses[-2]):
+            print("Warmer!")
+        else:
+            print("Colder!")
+    else:
+        if abs(answer-guess) <= 10:
+            print("Warm!")
+        else:
+            print("Cold!")
